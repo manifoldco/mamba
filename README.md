@@ -7,7 +7,9 @@ A library for signing URLs using ECDSA P-521 keys and SHA-512 encryption.
 
 ## Installation
 
-TBD
+```
+$ npm i @arigato/mamba
+```
 
 ## Usage
 
