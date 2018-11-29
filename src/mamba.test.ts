@@ -20,7 +20,7 @@ describe("The sign function", () => {
   ));
 
   it("produces a correct signature", () => {
-    const urlString = "http://example.com/?oid=23456";
+    const urlString = "https://api.manifold.co/v1/users?bar=foo&abc=cba";
     const signedURL = new URL(sign(urlString, keyPair.privateKey));
 
     const timestampedURL = new URL(urlString);
