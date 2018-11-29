@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/manifoldco/mamba.svg?branch=master)](https://travis-ci.org/manifoldco/mamba)
+[![codecov](https://codecov.io/gh/manifoldco/mamba/branch/master/graph/badge.svg)](https://codecov.io/gh/manifoldco/mamba)
+
 # mamba
 
 A library for signing URLs using ECDSA P-521 keys and SHA-512 encryption.
