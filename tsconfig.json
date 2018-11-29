@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "module": "system",
+    "outDir": "dist",
+    "types": ["node"],
+    "module": "CommonJS",
+    "target": "es5",
     "noImplicitAny": true,
     "preserveConstEnums": true,
-    "outFile": "dist/index.js",
     "sourceMap": true
   },
   "include": [
