@@ -3,5 +3,7 @@ node_js:
   - "node"
 scripts:
   - npm install codecov -g
+script:
+  - npm run test:coverage
 after_success:
   - npx codecov
