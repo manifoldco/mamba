@@ -3,7 +3,7 @@ import { URL } from "url";
 import { sign } from "./mamba";
 
 describe("The sign function", () => {
-  const options = {
+  const keyPair = generateKeyPairSync("ec", <ECKeyPairOptions<"pem", "pem">>{
     namedCurve: "secp521r1",
     privateKeyEncoding: {
       format: "pem",
@@ -13,11 +13,7 @@ describe("The sign function", () => {
       type: "spki",
       format: "pem"
     }
-  };
-
-  const keyPair = generateKeyPairSync("ec", <ECKeyPairOptions<"pem", "pem">>(
-    options
-  ));
+  });
 
   it("produces a correct signature", () => {
     const urlString = "https://api.manifold.co/v1/users?bar=foo&abc=cba";

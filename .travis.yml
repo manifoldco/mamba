@@ -1,5 +1,9 @@
 language: node_js
 node_js:
   - "node"
+scripts:
+  - npm install codecov -g
+script:
+  - npm run test:coverage
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - npx codecov
