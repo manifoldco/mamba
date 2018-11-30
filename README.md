@@ -13,7 +13,9 @@ $ npm i @arigato/mamba
 
 ## Usage
 
-The `sign` function accepts a URL and a private ECDSA P-521 encryption key. It returns the same URL with a timestamp and signature in the query denoted by `ts` and `sig`, respectively. Example:
+The `sign` function accepts a URL and a private ECDSA P-521 encryption key. It returns the same URL with a timestamp and signature in the query denoted by `ts` and `sig`, respectively. You can use a PEM or a DER key.
+
+### With a PEM key
 
 ```js
 import { sign } from "@arigato/mamba";
@@ -24,6 +26,19 @@ const signedUrl = sign(
 );
 
 // https://api.manifold.co/v1/users?bar=foo&abc=cba&ts=1543524418617&sig=MIGIAkIB8w1v%2F8VqdCXRUvKuTM7F%2F%2B8gpUJe5p2ewronH4Uakw3QD8WGGGxIpkX6bXiDdfUHxoc0K14Rl%2FBLEKQVHxK8pXYCQgFxffVMjMCUOaWbPRthEMSGL%2Fy3RuSPZigHs1RoHsqngrEvbSZwPW3ioLMxIPrjfva%2BxeAD7xHznhaaRyKU6ogX%2Bg%3D%3D
+```
+
+### With a DER key
+
+Use `formatDerKey`, which accepts either a string or a buffer.
+
+```js
+import { sign, formatDerKey, KeyType } from "@arigato/mamba";
+
+const signedUrl = sign(
+  "https://api.manifold.co/v1/users?bar=foo&abc=cba",
+  formatDerKey(somePrivateKey, KeyType.Private)
+);
 ```
 
 ## Development
