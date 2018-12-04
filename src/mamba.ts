@@ -11,17 +11,17 @@ export function formatPrivateDERKey(key: Buffer | string) {
 }
 
 export function sign(urlString: string, privateKey: string) {
-  const url = new URL(urlString);
-  const { hash } = url;
-  url.hash = "";
-  url.searchParams.set(
-    "ts",
-    Math.round(new Date().getTime() / 1000).toString()
-  );
-  const sign = crypto.createSign("SHA512");
-  sign.update(url.toString());
-
   try {
+    const url = new URL(urlString);
+    const { hash } = url;
+    url.hash = "";
+    url.searchParams.set(
+      "ts",
+      Math.round(new Date().getTime() / 1000).toString()
+    );
+    const sign = crypto.createSign("SHA512");
+    sign.update(url.toString());
+
     const sig = sign
       .sign(privateKey)
       .toString("base64")
