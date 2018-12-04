@@ -79,4 +79,12 @@ describe("The sign function", () => {
       expect(() => sign(urlString, key)).toThrowError(MambaError.BadKey);
     });
   });
+
+  describe("with a bad URL", () => {
+    it("propagates a URL parsing error", () => {
+      expect(() =>
+        sign("not-a-url", formatPrivateDERKey(keyPair.privateKey))
+      ).toThrowError();
+    });
+  });
 });
