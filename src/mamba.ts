@@ -1,11 +1,6 @@
 import * as crypto from "crypto";
 import { URL } from "url";
 
-export enum KeyType {
-  Public = "EC PUBLIC KEY",
-  Private = "EC PRIVATE KEY"
-}
-
 export function formatPrivateDERKey(key: Buffer | string) {
   const keyString = typeof key === "string" ? key : key.toString("base64");
   const begin = `-----BEGIN EC PRIVATE KEY-----`;

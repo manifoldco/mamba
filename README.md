@@ -30,14 +30,14 @@ const signedUrl = sign(
 
 ### With a DER key
 
-Use `formatDerKey`, which accepts either a string or a buffer.
+Use `formatPrivateDERKey`, which accepts either a string or a buffer.
 
 ```js
-import { sign, formatDerKey, KeyType } from "@arigato/mamba";
+import { sign, formatPrivateDERKey, KeyType } from "@arigato/mamba";
 
 const signedUrl = sign(
   "https://api.manifold.co/v1/users?bar=foo&abc=cba",
-  formatDerKey(somePrivateKey, KeyType.Private)
+  formatPrivateDERKey(somePrivateKey)
 );
 ```
 
