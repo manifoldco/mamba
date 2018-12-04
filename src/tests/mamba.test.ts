@@ -2,6 +2,7 @@ import { generateKeyPairSync, ECKeyPairOptions } from "crypto";
 import { URL } from "url";
 import { VIPER } from "./test-keys";
 import { sign, verify, formatPrivateDERKey } from "../mamba";
+import { MambaError } from "../errors";
 
 const urlString = "https://api.manifold.co/v1/users?bar=foo&abc=cba";
 
@@ -52,6 +53,30 @@ describe("The sign function", () => {
       const signedURL = new URL(VIPER.url);
 
       expect(verify(signedURL.toString(), VIPER.public)).toBe(true);
+    });
+  });
+
+  describe("with a key that's not encoded", () => {
+    const key = formatPrivateDERKey("bogus");
+
+    it("throws a decoder error", () => {
+      expect(() => sign(urlString, key)).toThrowError(MambaError.DecodeError);
+    });
+  });
+
+  describe("with a badly formatted key", () => {
+    const key = new Buffer("bogus").toString("base64");
+
+    it("throws a formatting error", () => {
+      expect(() => sign(urlString, key)).toThrowError(MambaError.FormatError);
+    });
+  });
+
+  describe("with a bogus key", () => {
+    const key = formatPrivateDERKey(new Buffer("bogus").toString("base64"));
+
+    it("throws a bad key error", () => {
+      expect(() => sign(urlString, key)).toThrowError(MambaError.BadKey);
     });
   });
 });

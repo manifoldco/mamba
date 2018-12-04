@@ -1,5 +1,6 @@
 import * as crypto from "crypto";
 import { URL } from "url";
+import { CryptoError, MambaError } from "./errors";
 
 export function formatPrivateDERKey(key: Buffer | string) {
   const keyString = typeof key === "string" ? key : key.toString("base64");
@@ -20,21 +21,30 @@ export function sign(urlString: string, privateKey: string) {
   const sign = crypto.createSign("SHA512");
   sign.update(url.toString());
 
-  /* TODO: The sign() function will throw exceptions if the key isn't formatted right.
-   * We should handle all the possible exceptions and return better error messages.
-   */
+  try {
+    const sig = sign
+      .sign(privateKey)
+      .toString("base64")
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_");
 
-  const sig = sign
-    .sign(privateKey)
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_");
+    url.searchParams.set("sig", sig);
 
-  url.searchParams.set("sig", sig);
+    url.hash = hash;
 
-  url.hash = hash;
-
-  return url.toString();
+    return url.toString();
+  } catch (err) {
+    switch (err.message) {
+      case CryptoError.DecodeError:
+        throw new Error(MambaError.DecodeError);
+      case CryptoError.FormatError:
+        throw new Error(MambaError.FormatError);
+      case CryptoError.BadKey:
+        throw new Error(MambaError.BadKey);
+      default:
+        throw err;
+    }
+  }
 }
 
 export function verify(urlString: string, publicKey: string) {
