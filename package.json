@@ -1,6 +1,6 @@
 {
   "name": "@arigato/mamba",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A tool for signing URLs using secp521r1",
   "main": "dist/mamba.js",
   "scripts": {
