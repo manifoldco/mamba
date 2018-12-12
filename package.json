@@ -1,8 +1,9 @@
 {
-  "name": "@arigato/mamba",
-  "version": "0.3.0",
+  "name": "@manifoldco/mamba",
+  "version": "0.3.2",
   "description": "A tool for signing URLs using secp521r1",
   "main": "dist/mamba.js",
+  "repository": "github:manifoldco/mamba",
   "scripts": {
     "build": "npx tsc",
     "test": "npx jest",
@@ -11,7 +12,7 @@
     "prepublishOnly": "npm run build"
   },
   "author": "manifoldco",
-  "license": "ISC",
+  "license": "BSD-3-Clause",
   "devDependencies": {
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.10",
