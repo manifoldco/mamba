@@ -3,6 +3,7 @@
   "version": "0.3.1",
   "description": "A tool for signing URLs using secp521r1",
   "main": "dist/mamba.js",
+  "repository": "github:manifoldco/mamba",
   "scripts": {
     "build": "npx tsc",
     "test": "npx jest",
