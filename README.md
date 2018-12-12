@@ -9,7 +9,7 @@ A library for signing URLs using ECDSA P-521 keys and SHA-512 encryption.
 ## Installation
 
 ```
-$ npm i @arigato/mamba
+$ npm i @manifoldco/mamba
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ The `sign` function accepts a URL and a private ECDSA P-521 encryption key. It r
 ### With a PEM key
 
 ```js
-import { sign } from "@arigato/mamba";
+import { sign } from "@manifoldco/mamba";
 
 const signedUrl = sign(
   "https://api.manifold.co/v1/users?bar=foo&abc=cba",
@@ -34,7 +34,7 @@ const signedUrl = sign(
 Use `formatPrivateDERKey`, which accepts either a string or a buffer.
 
 ```js
-import { sign, formatPrivateDERKey, KeyType } from "@arigato/mamba";
+import { sign, formatPrivateDERKey, KeyType } from "@manifoldco/mamba";
 
 const signedUrl = sign(
   "https://api.manifold.co/v1/users?bar=foo&abc=cba",
