@@ -1,6 +1,6 @@
 {
   "name": "@manifoldco/mamba",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "A tool for signing URLs using secp521r1",
   "main": "dist/mamba.js",
   "types": "dist/mamba.d.ts",
