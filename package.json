@@ -15,7 +15,7 @@
   "author": "manifoldco",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "@types/jest": "^23.3.10",
+    "@types/jest": "^26.0.22",
     "@types/node": "^10.12.10",
     "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
